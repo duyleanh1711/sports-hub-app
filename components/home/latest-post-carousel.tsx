@@ -16,26 +16,27 @@ import {
   CarouselContent,
 } from '@/components/ui/carousel-v2';
 
-import PostCard from './post-card';
+import PostCard from '../global/post-card';
 import SlideIndicators from '../global/slide-indicators';
 
-interface LatestPostsCarouselProps {
+type LatestPostsCarouselProps = {
   title: string;
   posts: Post[];
   viewAllHref?: string;
   className?: string;
-}
+};
 
 const LatestPostsCarousel = ({
   title,
   posts,
   viewAllHref = '/',
-  className = '',
+  className,
 }: LatestPostsCarouselProps) => {
+  const [count, setCount] = useState(0);
   const [current, setCurrent] = useState(1);
-  const [api, setApi] = useState<CarouselApi>();
-  const [count, setCount] = useState(posts.length);
+  const [api, setApi] = useState<CarouselApi | null>(null);
 
+  // Sync carousel state
   useEffect(() => {
     if (!api) return;
 
@@ -45,7 +46,6 @@ const LatestPostsCarousel = ({
     };
 
     syncState();
-
     api.on('select', syncState);
 
     return () => {
@@ -55,8 +55,12 @@ const LatestPostsCarousel = ({
 
   const handleSelect = (index: number) => {
     api?.scrollTo(index);
-    setCurrent(index + 1);
   };
+
+  // Fallback when no posts
+  if (!posts.length) {
+    return null;
+  }
 
   return (
     <section
@@ -65,43 +69,59 @@ const LatestPostsCarousel = ({
         className
       )}
     >
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-        <h2 className="text-2xl font-bold xl:px-2">{title}</h2>
+      {/* ===== Header ===== */}
+      <div className="flex flex-col items-start justify-between gap-2 sm:flex-row sm:items-center">
+        <h2 className="text-3xl font-bold md:text-2xl">{title}</h2>
+
         <Link
           href={viewAllHref}
+          aria-label="Xem tất cả bài đăng"
           className="group flex items-center gap-1 text-[15px] font-medium text-primary hover:underline"
         >
           Xem tất cả
-          <ChevronRightIcon className="size-4 group-hover:translate-x-1" />
+          <ChevronRightIcon
+            className="size-4 transition-transform group-hover:translate-x-1"
+            aria-hidden
+          />
         </Link>
       </div>
 
+      {/* ===== Carousel ===== */}
       <Carousel
         setApi={setApi}
-        opts={{ align: 'center', loop: true }}
+        opts={{ align: 'start', loop: true }}
         className="w-full"
       >
-        <CarouselContent className="xl:p-2">
+        <CarouselContent className="xl:px-2">
           {posts.map((post) => (
             <CarouselItem
               key={post.id}
-              className="basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/5"
+              className="basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/5 py-2"
             >
               <PostCard post={post} />
             </CarouselItem>
           ))}
         </CarouselContent>
 
-        <div className="flex items-center justify-between mt-4 px-2">
+        {/* ===== Controls ===== */}
+        <div className="mt-4 flex items-center justify-between px-2">
           <SlideIndicators
             count={count}
             current={current}
             onSelect={handleSelect}
           />
 
-          <div className="space-x-2">
-            <CarouselButton size="xl" segment="previous" />
-            <CarouselButton size="xl" segment="next" />
+          <div className="flex items-center gap-2">
+            <CarouselButton
+              size="xl"
+              segment="previous"
+              aria-label="Slide trước"
+            />
+            <CarouselButton
+              size="xl"
+              segment="next"
+              aria-label="Slide tiếp theo"
+            />
           </div>
         </div>
       </Carousel>

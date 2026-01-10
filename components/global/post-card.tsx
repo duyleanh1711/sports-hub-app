@@ -3,8 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { HeartIcon, ImageIcon } from 'lucide-react';
-import { MapPinIcon } from 'lucide-react';
+import { HeartIcon, ImageIcon, MapPinIcon } from 'lucide-react';
 
 import { Post } from '@/types/post';
 
@@ -16,7 +15,11 @@ import {
   CarouselHandler,
 } from '@/components/ui/carousel-v2';
 
-const PostCard = ({ post }: { post: Post }) => {
+type PostCardProps = {
+  post: Post;
+};
+
+const PostCard = ({ post }: PostCardProps) => {
   const stopLink = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -26,48 +29,56 @@ const PostCard = ({ post }: { post: Post }) => {
     <Link
       href={`/posts/${post.id}`}
       aria-label={post.title}
-      className="block group focus:outline-none"
+      title={post.title}
+      className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
     >
-      <article className="rounded-xl overflow-hidden hover:shadow-[0_4px_8px_rgba(0,0,0,0.20)] bg-white transition-all duration-500">
+      <article className="overflow-hidden rounded-xl bg-white transition-shadow duration-500 hover:shadow-[0_4px_8px_rgba(0,0,0,0.20)]">
+        {/* ===== Images ===== */}
         <div className="relative">
           <Carousel>
             <CarouselContent>
-              {post.images.map((img, i) => (
-                <CarouselItem key={i}>
+              {post.images.map((img) => (
+                <CarouselItem key={img}>
                   <div className="relative pt-[90%] overflow-hidden">
                     <Image
                       src={img}
                       alt={post.title}
                       fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover"
+                      priority={false}
                     />
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
 
-            <div className="absolute bottom-0 inset-x-0 flex items-center justify-between px-2 py-1.5 bg-black/50">
+            {/* Overlay info */}
+            <div className="absolute inset-x-0 bottom-0 flex items-center justify-between bg-black/50 px-2 py-1.5">
               <p className="text-xs font-semibold text-white">
                 {post.postedAgo}
               </p>
+
               <div className="flex items-center gap-1 text-white">
-                <ImageIcon className="size-4" />
+                <ImageIcon className="size-4" aria-hidden />
                 <span className="text-xs font-semibold">
                   {post.images.length} ảnh
                 </span>
               </div>
             </div>
 
+            {/* Save button */}
             <button
               onClick={stopLink}
               aria-label="Lưu tin"
-              className="absolute top-3 right-3 z-10"
+              className="absolute right-3 top-3 z-10 rounded-full bg-black/30 p-1.5 backdrop-blur transition hover:bg-black/50"
             >
-              <HeartIcon className="size-6 text-white" />
+              <HeartIcon className="size-5 text-white" aria-hidden />
             </button>
 
+            {/* Carousel controls */}
             {post.images.length > 1 && (
-              <CarouselHandler className="absolute top-3 left-3 mt-0">
+              <CarouselHandler className="absolute left-3 top-3 mt-0">
                 <CarouselButton segment="previous" onClick={stopLink} />
                 <CarouselButton segment="next" onClick={stopLink} />
               </CarouselHandler>
@@ -75,8 +86,9 @@ const PostCard = ({ post }: { post: Post }) => {
           </Carousel>
         </div>
 
+        {/* ===== Content ===== */}
         <div className="space-y-2 p-3 text-start">
-          <h3 className="font-semibold line-clamp-2">{post.title}</h3>
+          <h3 className="line-clamp-2 font-semibold">{post.title}</h3>
 
           <p className="text-xs text-muted-fg">{post.zone}</p>
 
@@ -86,9 +98,9 @@ const PostCard = ({ post }: { post: Post }) => {
             <p className="text-sm font-medium">{post.area}</p>
           </div>
 
-          <div className="flex items-center gap-1">
-            <MapPinIcon className="size-5 shrink-0 text-primary" />
-            <p className="text-[13px] leading-normal line-clamp-2">
+          <div className="flex items-start gap-1">
+            <MapPinIcon className="size-5 shrink-0 text-primary" aria-hidden />
+            <p className="line-clamp-2 text-[13px] leading-normal">
               {post.location}
             </p>
           </div>
@@ -96,7 +108,7 @@ const PostCard = ({ post }: { post: Post }) => {
           {post.news && (
             <button
               onClick={stopLink}
-              className="font-medium underline hover:text-primary"
+              className="text-sm font-medium underline transition-colors hover:text-primary"
             >
               Xem {post.news}+ tin dự án
             </button>

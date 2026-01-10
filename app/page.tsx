@@ -6,6 +6,8 @@ import { VOLLEYBALL_FIELDS_DATA } from '@/constants/mock/volleyball-fields-data'
 import { TABLE_TENNIS_FIELDS_DATA } from '@/constants/mock/table-tennis-fields-data';
 
 import Hero from '@/components/home/hero';
+import Stats from '@/components/home/stats';
+import Footer from '@/components/global/footer';
 import LatestPostsCarousel from '@/components/home/latest-post-carousel';
 
 export default function Home() {
@@ -32,6 +34,8 @@ export default function Home() {
           posts={TABLE_TENNIS_FIELDS_DATA}
         />
       </div>
+      <Stats />
+      <Footer />
     </main>
   );
 }

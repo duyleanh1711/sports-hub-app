@@ -95,8 +95,6 @@ export const VOLLEYBALL_FIELDS_DATA: Post[] = [
       '/posts/volleyball/post-6-2.jpg',
       '/posts/volleyball/post-6-3.jpg',
       '/posts/volleyball/post-6-4.jpg',
-      '/posts/volleyball/post-6-5.jpg',
-      '/posts/volleyball/post-6-6.jpg',
     ],
     postedAgo: '2 ngày trước',
   },

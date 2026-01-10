@@ -71,20 +71,20 @@ const Header = () => {
                   isScrolled ? 'text-black' : 'text-white'
                 )}
               >
-                <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-200" />
-                <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-200" />
+                <Menu className="in-data-[state=active]:rotate-180 in-data-[state=active]:scale-0 in-data-[state=active]:opacity-0 m-auto size-6 duration-500" />
+                <X className="in-data-[state=active]:rotate-0 in-data-[state=active]:scale-100 in-data-[state=active]:opacity-100 absolute inset-0 m-auto size-6 -rotate-180 scale-0 opacity-0 duration-500" />
               </button>
             </div>
 
             {/* ================= Center: Desktop Menu ================= */}
             <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-              <ul className="flex gap-8 text-[15px]">
+              <ul className="flex gap-12 text-[15px]">
                 {MENU_ITEMS.map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
                       className={cn(
-                        'hover:text-primary font-medium block duration-150',
+                        'hover:text-primary font-medium block duration-500',
                         isScrolled ? 'text-black' : 'text-white'
                       )}
                     >
@@ -105,7 +105,7 @@ const Header = () => {
                       <Link
                         href={item.href}
                         onClick={closeMenu}
-                        className="text-black hover:text-primary block duration-150"
+                        className="text-black hover:text-primary block duration-500"
                       >
                         {item.name}
                       </Link>
@@ -119,7 +119,6 @@ const Header = () => {
                 <Button
                   asChild
                   variant="outline"
-                  size="sm"
                   className={cn(isScrolled && 'lg:hidden')}
                 >
                   <Link href="/sign-in" className="w-full md:w-fit">
