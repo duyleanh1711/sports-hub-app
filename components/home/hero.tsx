@@ -85,7 +85,7 @@ const Hero = () => {
         <div className="absolute left-0 top-0 h-320 w-60 -translate-y-87.5 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
       </div>
 
-      <div className="relative pt-24 md:pt-36">
+      <div className="relative h-screen flex items-center justify-center">
         {/* Animated background */}
         <AnimatedGroup
           variants={{
@@ -110,7 +110,7 @@ const Hero = () => {
         />
 
         {/* Content */}
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-360 px-4">
           <div className="text-center sm:mx-auto lg:mr-auto">
             {/* Badge */}
             <AnimatedGroup
@@ -124,7 +124,7 @@ const Hero = () => {
                 className="group mx-auto flex w-fit items-center gap-4 rounded-full border bg-muted p-1 pl-4 shadow-md shadow-zinc-950/5 transition-colors duration-500 hover:bg-background dark:border-t-white/5 dark:shadow-zinc-950"
               >
                 <span className="text-sm font-medium text-foreground">
-                  Nền tảng đặt lịch sân thể thao thông minh
+                  Nền tảng đặt lịch sân thể thao
                 </span>
 
                 <span className="block h-4 w-0.5 bg-white dark:bg-zinc-700" />
@@ -146,7 +146,7 @@ const Hero = () => {
               as="h1"
               preset="fade-in-blur"
               speedSegment={0.3}
-              className="mx-auto mt-8 max-w-6xl text-balance text-5xl font-semibold leading-tight text-white md:text-7xl lg:mt-16 xl:text-[5.25rem]"
+              className="mx-auto mt-8 max-w-360 text-balance text-5xl font-semibold leading-tight text-white md:text-7xl 2xl:text-[5.25rem]"
             >
               Ứng dụng đặt sân tập thể thao hàng đầu tại Việt Nam
             </TextEffect>
@@ -187,20 +187,6 @@ const Hero = () => {
             </AnimatedGroup>
           </div>
         </div>
-
-        {/* App preview */}
-        <AnimatedGroup
-          variants={{
-            container: staggerContainer,
-            item: itemVariant,
-          }}
-        >
-          <div className="relative mt-8 overflow-hidden px-4 sm:mt-12 md:mt-20">
-            <div className="relative mx-auto max-w-6xl overflow-hidden rounded-2xl border bg-background p-4 shadow-lg shadow-zinc-950/15 ring-1 ring-background">
-              <div className="h-120">Ảnh minh họa giao diện ứng dụng</div>
-            </div>
-          </div>
-        </AnimatedGroup>
       </div>
     </>
   );
