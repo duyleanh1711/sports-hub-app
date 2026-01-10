@@ -6,7 +6,7 @@ import { SOCIAL_LINKS } from '@/constants/social-links';
 
 const Footer = () => {
   return (
-    <footer className="py-16 md:py-32">
+    <footer className="py-8 md:py-16">
       <div className="mx-auto max-w-5xl px-6 text-center">
         {/* Logo */}
         <Link href="/" aria-label="Trang chủ" className="inline-block">

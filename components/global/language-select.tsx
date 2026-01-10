@@ -6,14 +6,20 @@ import { useEffect, useRef, useState } from 'react';
 import { ChevronDownIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
+import { ThemeMode } from '@/types/global';
 import { Language, LANGUAGES } from '@/constants/languages';
 
 type LanguageSelectProps = {
   className?: string;
   isScrolled?: boolean;
+  mode?: ThemeMode;
 };
 
-const LanguageSelect = ({ className, isScrolled }: LanguageSelectProps) => {
+const LanguageSelect = ({
+  className,
+  isScrolled,
+  mode,
+}: LanguageSelectProps) => {
   const [open, setOpen] = useState(false);
   const [current, setCurrent] = useState<Language>(LANGUAGES[0]);
 
@@ -55,7 +61,11 @@ const LanguageSelect = ({ className, isScrolled }: LanguageSelectProps) => {
       >
         <Image src={current.flag} alt={current.label} width={30} height={30} />
 
-        <div className={cn(isScrolled ? 'text-black' : 'text-white')}>
+        <div
+          className={cn(
+            isScrolled || mode === 'dark' ? 'text-black' : 'text-white'
+          )}
+        >
           <p className="text-[11px] opacity-80">Ngôn ngữ</p>
           <div className="flex items-center gap-1">
             <p className="text-xs font-semibold">{current.label}</p>

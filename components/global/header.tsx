@@ -7,12 +7,13 @@ import { useEffect, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
+import { ThemeMode } from '@/types/global';
 import { MENU_ITEMS } from '@/constants/menu-items';
 
 import LanguageSelect from './language-select';
 import { Button } from '@/components/ui/button';
 
-const Header = () => {
+const Header = ({ mode }: { mode?: ThemeMode }) => {
   const [menuState, setMenuState] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -98,7 +99,7 @@ const Header = () => {
 
                   {/* Language selector (mobile) */}
                   <div className="block xl:hidden shrink-0">
-                    <LanguageSelect isScrolled={isScrolled} />
+                    <LanguageSelect isScrolled={isScrolled} mode={mode} />
                   </div>
 
                   {/* Hamburger menu toggle */}
@@ -107,7 +108,9 @@ const Header = () => {
                     aria-label={menuState ? 'Đóng menu' : 'Mở menu'}
                     className={cn(
                       'relative z-20 block cursor-pointer xl:hidden',
-                      isScrolled ? 'text-black' : 'text-white'
+                      isScrolled || mode === 'dark'
+                        ? 'text-black'
+                        : 'text-white'
                     )}
                   >
                     {/* Hamburger / Close icon transitions */}
@@ -125,7 +128,9 @@ const Header = () => {
                       href={item.href}
                       className={cn(
                         'hover:text-primary font-medium block duration-500',
-                        isScrolled ? 'text-black' : 'text-white'
+                        isScrolled || mode === 'dark'
+                          ? 'text-black'
+                          : 'text-white'
                       )}
                     >
                       {item.name}
@@ -198,7 +203,7 @@ const Header = () => {
 
               {/* Language switcher for desktop */}
               <div className="hidden xl:block shrink-0">
-                <LanguageSelect isScrolled={isScrolled} />
+                <LanguageSelect isScrolled={isScrolled} mode={mode} />
               </div>
             </div>
           </div>

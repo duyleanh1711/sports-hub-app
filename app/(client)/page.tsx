@@ -7,7 +7,6 @@ import { TABLE_TENNIS_FIELDS_DATA } from '@/constants/mock/table-tennis-fields-d
 
 import Hero from '@/components/home/hero';
 import Stats from '@/components/home/stats';
-import Footer from '@/components/global/footer';
 import SportsFieldSearch from '@/components/home/sports-field-search';
 import LatestPostsCarousel from '@/components/home/latest-post-carousel';
 
@@ -37,7 +36,6 @@ export default function Home() {
         />
       </div>
       <Stats />
-      <Footer />
     </main>
   );
 }

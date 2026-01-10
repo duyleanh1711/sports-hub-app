@@ -2,7 +2,7 @@ import { STATS } from '@/constants/stats';
 
 const Stats = () => {
   return (
-    <section className="py-12 md:py-20">
+    <section className="pb-12 md:pb-20">
       <div className="mx-auto max-w-5xl space-y-10 px-6 md:space-y-16">
         {/* Heading */}
         <div className="relative z-10 mx-auto max-w-4xl space-y-6 text-center">
