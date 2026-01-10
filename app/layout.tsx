@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import { Manrope } from 'next/font/google';
 import './globals.css';
 
+import NextTopLoader from 'nextjs-toploader';
+
+import QueryProvider from '@/components/providers/query-provider';
+
 const manrope = Manrope({
   subsets: ['latin'],
   variable: '--font-manrope',
@@ -20,9 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi">
+    <html lang="vi" suppressHydrationWarning>
       <body className={`${manrope.variable} font-sans antialiased`}>
-        {children}
+        <QueryProvider>
+          <NextTopLoader color="#ed662e" />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

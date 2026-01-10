@@ -72,7 +72,7 @@ const Hero = () => {
       {/* Overlay */}
       <div
         aria-hidden
-        className="absolute inset-0 bg-linear-to-b from-black/10 via-black/70 to-black"
+        className="absolute inset-0 bg-linear-to-b from-black/40 via-black/60 to-black"
       />
 
       {/* Decorative gradients */}
@@ -127,13 +127,11 @@ const Hero = () => {
                   Nền tảng đặt lịch sân thể thao
                 </span>
 
-                <span className="block h-4 w-0.5 bg-white dark:bg-zinc-700" />
-
-                <div className="size-6 overflow-hidden rounded-full bg-background duration-500 group-hover:bg-muted">
+                <div className="size-6 overflow-hidden rounded-full bg-background duration-500 group-hover:bg-primary/10 border border-primary">
                   <div className="flex w-12 -translate-x-1/2 duration-500 group-hover:translate-x-0">
                     {[0, 1].map((i) => (
                       <span key={i} className="flex size-6">
-                        <ArrowRight className="m-auto size-3" />
+                        <ArrowRight className="m-auto size-3 text-primary" />
                       </span>
                     ))}
                   </div>

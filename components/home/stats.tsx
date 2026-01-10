@@ -12,8 +12,9 @@ const Stats = () => {
             <span className="text-primary"> qua những con số</span>
           </h2>
           <p className="text-muted-foreground text-base">
-            SportsHub giúp hàng nghìn người chơi tìm sân nhanh hơn, đặt lịch dễ
-            hơn và chơi thể thao nhiều hơn mỗi ngày.
+            <span className="text-black font-bold">SportsHub</span> giúp hàng
+            nghìn người chơi tìm sân nhanh hơn, đặt lịch dễ hơn và chơi thể thao
+            nhiều hơn mỗi ngày.
           </p>
         </div>
 
