@@ -58,7 +58,7 @@ const Footer = () => {
         {/* Copyright */}
         <p className="text-muted-foreground text-sm">
           © {new Date().getFullYear()}{' '}
-          <span className="font-medium">SportsHub</span>. Bảo lưu mọi quyền.
+          <span className="font-medium">SportsHub</span>. All rights reserved.
         </p>
       </div>
     </footer>

@@ -6,7 +6,7 @@ const Stats = () => {
       <div className="mx-auto max-w-5xl space-y-10 px-6 md:space-y-16">
         {/* Heading */}
         <div className="relative z-10 mx-auto max-w-4xl space-y-6 text-center">
-          <h2 className="text-4xl font-bold tracking-tight lg:text-5xl">
+          <h2 className="text-5xl font-bold tracking-tight">
             Kết nối đam mê thể thao
             <br className="hidden sm:block" />
             <span className="text-primary"> qua những con số</span>
@@ -19,7 +19,7 @@ const Stats = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid gap-12 divide-y text-center md:grid-cols-3 md:gap-2 md:divide-x md:divide-y-0">
+        <div className="grid gap-12 text-center md:grid-cols-3 md:gap-2 md:divide-x md:divide-y-0">
           {STATS.map((stat, index) => (
             <div key={index} className="space-y-3">
               <div className="text-5xl font-extrabold text-foreground">

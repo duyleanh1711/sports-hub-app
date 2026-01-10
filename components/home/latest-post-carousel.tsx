@@ -71,7 +71,7 @@ const LatestPostsCarousel = ({
     >
       {/* ===== Header ===== */}
       <div className="flex flex-col items-center justify-between gap-2 sm:flex-row px-2">
-        <h2 className="text-3xl font-bold md:text-2xl">{title}</h2>
+        <h2 className="text-2xl font-bold">{title}</h2>
 
         <Link
           href={viewAllHref}

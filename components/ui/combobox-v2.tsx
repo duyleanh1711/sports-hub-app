@@ -180,7 +180,7 @@ function ComboboxItem({
   return (
     <ComboboxPrimitive.Item
       className={cn(
-        'flex min-h-8 items-center gap-2 rounded-sm px-3 py-2 text-base outline-none transition-all duration-500 cursor-pointer',
+        'flex min-h-8 items-center gap-2 rounded-sm px-3 py-2 text-sm md:text-base outline-none transition-all duration-500 cursor-pointer',
         'data-highlighted:bg-primary/10 data-highlighted:text-primary',
         'data-disabled:pointer-events-none data-disabled:opacity-60',
         'sm:min-h-7 sm:text-sm',

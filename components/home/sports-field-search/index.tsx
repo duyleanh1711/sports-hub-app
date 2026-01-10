@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import { Search } from 'lucide-react';
+
 import { LocationItem } from '@/types/area';
 
 import SportSelect from './sport-select';
@@ -20,13 +22,13 @@ const SportsFieldSearch = () => {
   );
 
   return (
-    <div className="mx-auto w-full space-y-3 p-6 xl:w-300 2xl:w-350">
+    <div className="mx-auto w-full space-y-3 p-5 md:p-6 xl:w-300 2xl:w-350">
       <div className="space-y-6 rounded-2xl bg-white px-6 py-10 shadow-xl">
-        <div className="space-y-2">
+        <div className="flex flex-col items-center md:items-start gap-2">
           <h2 className="text-2xl md:text-3xl font-bold">
             Đặt sân thể thao ngay
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-xs md:text-sm text-muted-foreground">
             Tìm kiếm sân chơi thể thao, thi đấu khắp cả nước
           </p>
         </div>
@@ -54,7 +56,8 @@ const SportsFieldSearch = () => {
           />
 
           {/* Search button */}
-          <Button size={'lg'} className="w-full lg:w-fit">
+          <Button size="lg" className="w-full lg:w-fit flex items-center gap-2">
+            <Search className="w-5 h-5" />
             Tìm kiếm ngay
           </Button>
         </div>

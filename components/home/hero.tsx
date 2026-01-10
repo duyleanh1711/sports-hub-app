@@ -144,7 +144,7 @@ const Hero = () => {
               as="h1"
               preset="fade-in-blur"
               speedSegment={0.3}
-              className="mx-auto mt-8 max-w-360 text-balance text-5xl font-semibold leading-tight text-white md:text-7xl 2xl:text-[5.25rem]"
+              className="mx-auto mt-8 max-w-360 text-balance text-5xl font-bold leading-tight text-white md:text-7xl 2xl:text-[5.25rem]"
             >
               Ứng dụng đặt sân tập thể thao hàng đầu tại Việt Nam
             </TextEffect>
@@ -156,7 +156,7 @@ const Hero = () => {
               preset="fade-in-blur"
               speedSegment={0.3}
               delay={0.5}
-              className="mx-auto mt-8 max-w-2xl text-balance text-lg text-white"
+              className="mx-auto mt-8 max-w-2xl text-balance text-sm md:text-base xl:text-lg text-white"
             >
               Mang đến trải nghiệm đặt sân trực tuyến thuận tiện và linh hoạt
               cho người chơi.
@@ -170,7 +170,7 @@ const Hero = () => {
               }}
               className="mt-12 flex items-center justify-center gap-2"
             >
-              <Button asChild size="lg" className="px-5 text-base">
+              <Button asChild size="lg" className="px-5 text-sm md:text-base">
                 <Link href="/">Đặt sân ngay</Link>
               </Button>
 
@@ -178,7 +178,7 @@ const Hero = () => {
                 asChild
                 size="lg"
                 variant="ghost"
-                className="px-5 text-base text-white"
+                className="px-5 text-sm md:text-base text-white"
               >
                 <Link href="/">Xem sân trống</Link>
               </Button>
