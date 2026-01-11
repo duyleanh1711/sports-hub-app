@@ -22,8 +22,8 @@ const SportsFieldSearch = () => {
   );
 
   return (
-    <div className="mx-auto w-full space-y-3 p-5 md:p-6 xl:w-300 2xl:w-350">
-      <div className="space-y-6 rounded-2xl bg-white px-6 py-10 shadow-xl">
+    <div className="mx-auto w-full space-y-3 p-5 md:p-6 max-w-360">
+      <div className="space-y-6 rounded-2xl bg-white px-6 py-10 xl:mx-2 shadow-xl">
         <div className="flex flex-col items-center md:items-start gap-2">
           <h2 className="text-2xl md:text-3xl font-bold">
             Đặt sân thể thao ngay

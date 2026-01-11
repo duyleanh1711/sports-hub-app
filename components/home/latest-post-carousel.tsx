@@ -65,7 +65,7 @@ const LatestPostsCarousel = ({
   return (
     <section
       className={cn(
-        'w-full xl:w-300 2xl:w-350 space-y-3 p-6 mx-auto bg-white',
+        'w-full max-w-360 space-y-3 p-6 mx-auto rounded-lg bg-white',
         className
       )}
     >

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
+import slugify from 'slugify';
 import { HeartIcon, ImageIcon, MapPinIcon } from 'lucide-react';
 
 import { Post } from '@/types/post';
@@ -27,7 +28,10 @@ const PostCard = ({ post }: PostCardProps) => {
 
   return (
     <Link
-      href={`/posts/${post.id}`}
+      href={`/posts/${slugify(post.title, {
+        lower: true,
+        locale: 'vi',
+      })}`}
       aria-label={post.title}
       title={post.title}
       className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
@@ -71,7 +75,7 @@ const PostCard = ({ post }: PostCardProps) => {
             <button
               onClick={stopLink}
               aria-label="Lưu tin"
-              className="absolute right-3 top-3 z-10 rounded-full bg-black/30 p-1.5 backdrop-blur transition hover:bg-black/50"
+              className="absolute right-3 top-3 z-10 rounded-full bg-black/30 p-1.5 backdrop-blur transition hover:bg-black/50 cursor-pointer"
             >
               <HeartIcon className="size-5 text-white" aria-hidden />
             </button>

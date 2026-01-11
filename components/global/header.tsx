@@ -44,9 +44,9 @@ const Header = ({ mode }: { mode?: ThemeMode }) => {
         {/* Container for navbar content */}
         <div
           className={cn(
-            'mx-auto mt-2 max-w-360 px-6 transition-all duration-500 lg:px-12',
+            'mx-auto mt-2 max-w-360 px-6 xl:px-0 transition-all duration-500',
             isScrolled &&
-              'bg-background/50 max-w-7xl rounded-xl backdrop-blur-lg lg:px-5' // Rounded and blurred background on scroll
+              'bg-background/50 max-w-5xl 2xl:max-w-6xl rounded-xl backdrop-blur-lg xl:px-6' // Rounded and blurred background on scroll
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0">
@@ -71,31 +71,33 @@ const Header = ({ mode }: { mode?: ThemeMode }) => {
                 </Link>
 
                 {/* Mobile menu buttons: Sign in / Sign up / Language */}
-                <div className="flex items-center gap-2">
-                  {/* Sign-in button (mobile) */}
-                  <Button
-                    asChild
-                    variant="outline"
-                    size={'lg'}
-                    className={cn(
-                      'hidden md:flex xl:hidden',
-                      isScrolled && 'lg:hidden'
-                    )}
-                  >
-                    <Link href="/sign-in">Đăng nhập</Link>
-                  </Button>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    {/* Sign-in button (mobile) */}
+                    <Button
+                      asChild
+                      variant="outline"
+                      size={'lg'}
+                      className={cn(
+                        'hidden md:flex xl:hidden',
+                        isScrolled && 'lg:hidden'
+                      )}
+                    >
+                      <Link href="/sign-in">Đăng nhập</Link>
+                    </Button>
 
-                  {/* Sign-up button (mobile) */}
-                  <Button
-                    asChild
-                    size={'lg'}
-                    className={cn(
-                      'hidden md:flex xl:hidden',
-                      isScrolled && 'lg:hidden'
-                    )}
-                  >
-                    <Link href="/sign-up">Đăng ký</Link>
-                  </Button>
+                    {/* Sign-up button (mobile) */}
+                    <Button
+                      asChild
+                      size={'lg'}
+                      className={cn(
+                        'hidden md:flex xl:hidden',
+                        isScrolled && 'lg:hidden'
+                      )}
+                    >
+                      <Link href="/sign-up">Đăng ký</Link>
+                    </Button>
+                  </div>
 
                   {/* Language selector (mobile) */}
                   <div className="block xl:hidden shrink-0">

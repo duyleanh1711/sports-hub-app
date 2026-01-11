@@ -20,7 +20,7 @@ const Page = () => {
       <section className="py-16 md:py-32 pt-24">
         <div className="mx-auto max-w-5xl space-y-8 px-6 md:space-y-16">
           {/* Main headline */}
-          <h2 className="relative z-10 max-w-xl text-4xl font-bold leading-tight lg:text-5xl">
+          <h2 className="relative z-10 max-w-xl text-4xl font-bold leading-tight lg:text-5xl text-center md:text-start">
             <span className="text-primary">SportsHub</span> kết nối người chơi
             với các địa điểm thể thao một cách dễ dàng
           </h2>

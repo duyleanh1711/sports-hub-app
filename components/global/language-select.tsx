@@ -57,7 +57,7 @@ const LanguageSelect = ({
         onClick={toggle}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex cursor-pointer items-center gap-3 rounded-md p-1 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+        className="flex cursor-pointer items-center gap-3 rounded-md text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       >
         <Image src={current.flag} alt={current.label} width={30} height={30} />
 

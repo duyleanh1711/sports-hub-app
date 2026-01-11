@@ -26,7 +26,7 @@ const Footer = () => {
             <Link
               key={link.title}
               href={link.href}
-              className="text-muted-foreground transition-colors duration-300 hover:text-primary"
+              className="text-muted-foreground transition-colors duration-500 hover:text-primary"
             >
               {link.title}
             </Link>
@@ -42,7 +42,7 @@ const Footer = () => {
               aria-label={item.label}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted-foreground transition-all duration-300 hover:text-primary hover:scale-110"
+              className="text-muted-foreground transition-all duration-500 hover:text-primary hover:scale-110"
             >
               <svg
                 className="size-6"
