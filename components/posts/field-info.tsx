@@ -15,36 +15,33 @@ import {
   CarouselContent,
 } from '@/components/ui/carousel-v2';
 import { Button } from '@/components/ui/button';
-
 import SlideIndicators from '../global/slide-indicators';
 
-/**
- * List of field images
- * (Should be replaced by API data in real usage)
- */
+// Lightbox
+import 'yet-another-react-lightbox/styles.css';
+import Lightbox from 'yet-another-react-lightbox';
+import Zoom from 'yet-another-react-lightbox/plugins/zoom';
+
 const IMAGES = [
   '/posts/football/post-3-1.jpg',
   '/posts/football/post-3-2.jpg',
   '/posts/football/post-3-3.jpg',
   '/posts/football/post-3-4.jpg',
   '/posts/football/post-3-5.jpg',
-  '/posts/football/post-3-6.jpg',
-  '/posts/football/post-4-1.jpg',
-  '/posts/football/post-4-1.jpg',
-  '/posts/football/post-4-1.jpg',
-  '/posts/football/post-4-1.jpg',
 ];
 
-const THUMBNAIL_HEIGHT = 432; // Height to enable vertical scrolling
+const THUMBNAIL_HEIGHT = 432;
 
 const FieldInfo = () => {
   const [api, setApi] = useState<CarouselApi | null>(null);
   const [current, setCurrent] = useState(1);
   const [count, setCount] = useState(0);
 
-  /**
-   * Sync carousel state with thumbnails & slide indicators
-   */
+  // Lightbox state
+  const [openLightbox, setOpenLightbox] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // Sync carousel state
   useEffect(() => {
     if (!api) return;
 
@@ -61,9 +58,6 @@ const FieldInfo = () => {
     };
   }, [api]);
 
-  /**
-   * Scroll carousel to selected image
-   */
   const handleSelect = useCallback(
     (index: number) => {
       api?.scrollTo(index);
@@ -117,13 +111,18 @@ const FieldInfo = () => {
             {IMAGES.map((src, index) => (
               <CarouselItem key={index} className="basis-full py-2">
                 <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted">
+                  {/* Clickable image for lightbox */}
                   <Image
                     src={src}
                     alt={`Ảnh sân ${index + 1}`}
                     fill
-                    className="object-contain"
+                    className="object-contain cursor-zoom-in"
                     sizes="100vw"
                     priority={index === 0}
+                    onClick={() => {
+                      setLightboxIndex(index);
+                      setOpenLightbox(true);
+                    }}
                   />
 
                   {/* Save / favorite button */}
@@ -145,7 +144,6 @@ const FieldInfo = () => {
               current={current}
               onSelect={handleSelect}
             />
-
             <div className="flex items-center gap-2">
               <CarouselButton
                 size="xl"
@@ -162,20 +160,26 @@ const FieldInfo = () => {
         </Carousel>
       </div>
 
+      {/* ================= LIGHTBOX ================= */}
+      <Lightbox
+        open={openLightbox}
+        close={() => setOpenLightbox(false)}
+        index={lightboxIndex}
+        slides={IMAGES.map((src) => ({ src }))}
+        plugins={[Zoom]}
+      />
+
       {/* ================= FIELD DETAILS ================= */}
       <div className="mt-6 space-y-5">
-        {/* Title & basic info */}
         <div className="space-y-3">
           <div className="space-y-1">
             <h1 className="text-lg md:text-xl font-bold">
               Sân bóng mini 5 người cỏ nhân tạo – khu nghỉ dưỡng Đà Lạt
             </h1>
-
             <p className="text-sm text-muted-foreground">
               Sân 5 người / Cỏ nhân tạo
             </p>
           </div>
-
           <div className="flex items-center gap-6">
             <span className="text-lg md:text-xl font-bold text-[#f0325e]">
               300.000đ / giờ
@@ -184,7 +188,6 @@ const FieldInfo = () => {
           </div>
         </div>
 
-        {/* Location & update time */}
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <MapPin className="w-6 size-4.5 shrink-0" />
@@ -192,14 +195,13 @@ const FieldInfo = () => {
               26 Xô Viết Nghệ Tĩnh, Phường 7, Đà Lạt, Lâm Đồng.
             </p>
           </div>
-
           <div className="flex items-center gap-2">
             <Clock className="w-6 size-4 shrink-0" />
             <p className="text-sm">Cập nhật 2 giờ trước</p>
           </div>
         </div>
 
-        {/* ================= Booking CTA ================= */}
+        {/* Booking CTA for mobile */}
         <Button size="lg" className="w-full flex md:hidden gap-2">
           <CalendarCheck className="size-4" />
           Đặt sân ngay

@@ -61,6 +61,7 @@
     "tailwind-merge": "^3.4.0",
     "tailwind-variants": "^3.2.2",
     "vaul": "^1.1.2",
+    "yet-another-react-lightbox": "^3.28.0",
     "zod": "^4.3.5"
   },
   "devDependencies": {
